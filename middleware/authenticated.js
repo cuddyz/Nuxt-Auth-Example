@@ -4,7 +4,7 @@ export default function({ store, route, redirect }) {
 
   if (!user && route.path !== '/') {
     redirect('/')
-  } else if (user && !user.isAdmin && route.path.match(adminRoute)) {
+  } else if (user && !store.getters['users/isAdmin'] && route.path.match(adminRoute)) {
     redirect('/profile')
   } else if (user && route.path === '/') {
     redirect('/profile')

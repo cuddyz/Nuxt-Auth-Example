@@ -11,6 +11,12 @@ export const mutations = {
   }
 }
 
+export const getters = {
+  isAdmin(state) {
+    return state.user ? state.user.email === 'admin@gmail.com' : false
+  }
+}
+
 export const actions = {
   async login({ commit }, account) {
     try {
