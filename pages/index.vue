@@ -24,10 +24,13 @@ export default {
   },
   methods: {
     login() {
-      this.$store.dispatch('users/login', this.account).catch(error => {
-        this.error = error.code
-      })
-      this.$router.push('/profile')
+      this.$store.dispatch('users/login', this.account)
+        .then(() => {
+          this.$router.push('/profile')
+        })
+        .catch(error => {
+          this.error = error.code
+        })
     }
   }
 }
