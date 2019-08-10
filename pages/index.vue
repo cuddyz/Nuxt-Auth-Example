@@ -5,6 +5,7 @@
       <input v-model="account.email" id="nuxtfire-email" type="email" placeholder="Email Address" />
       <input v-model="account.password" id="nuxtfire-password" type="password" placeholder="Password" />
       <button @click="login()" type="submit">Submit</button>
+      <p v-if="error">{{ error }}</p>
     </form>
   </main>
 </template>
@@ -17,13 +18,15 @@ export default {
       account: {
         email: '',
         password: ''
-      }
+      },
+      error: ''
     }
   },
   methods: {
     login() {
-      console.log(this.account.email)
-      console.log(this.account.password)
+      this.$store.dispatch('users/login', this.account).catch(error => {
+        this.error = error.code
+      })
       this.$router.push('/profile')
     }
   }
