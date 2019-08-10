@@ -16,6 +16,10 @@ module.exports = {
   css: [
     { src: '@/assets/styles/app.scss', lang: 'scss' }
   ],
+
+  router: {
+    middleware: ['authenticated']
+  },
   /*
   /*
   ** Build configuration

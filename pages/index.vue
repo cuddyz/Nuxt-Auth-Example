@@ -2,16 +2,31 @@
   <main>
     <form @submit.prevent>
       <h1 class="mb-1">Login</h1>
-      <input type="text" placeholder="Username" />
-      <input type="text" placeholder="Password" />
-      <button type="submit">Submit</button>
+      <input v-model="account.email" id="nuxtfire-email" type="email" placeholder="Email Address" />
+      <input v-model="account.password" id="nuxtfire-password" type="password" placeholder="Password" />
+      <button @click="login()" type="submit">Submit</button>
     </form>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  data() {
+    return {
+      account: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    login() {
+      console.log(this.account.email)
+      console.log(this.account.password)
+      this.$router.push('/profile')
+    }
+  }
 }
 </script>
 
